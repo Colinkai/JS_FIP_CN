@@ -48,7 +48,7 @@ const styles = {
   cellspacing: "0",
   id: "table-data-wrap",
 };
-// console.log();
+console.log(typeof styles);
 const divDom = $("table-data-wrap");
 const tableDome = createEl("table"); //creatElement 创建dom对象
 tableDome.width = "100%"; //setAttribute 设置属性
