@@ -1,58 +1,15 @@
 "use strict";
-console.log("success");
-/**
- * 获取id的dom元素
- * @param {string} id
- */
-function $(id) {
-  if (typeof id == "string") {
-    const dom = document.getElementById(id);
-    if (!dom) {
-      throw new Error("未找到指定dom对象");
-    } else {
-      return dom;
-    }
-  } else {
-    throw new Errow("参数id必须为字符串类型");
-  }
-}
-/**
- *
- * @param {string} node
- */
-function createEl(node) {
-  return document.createElement(node);
-}
-/**
- * setattribute 每次只有能赋值一个 需要通过遍历来
- * @param {dom对象} node
- * @param {json} styles
- */
-function setAttr(node, styles) {
-  for (let key in styles) {
-    node.setAttribute(key, styles[key]);
-  }
-}
-/**
- * 获取dom对象的属性
- * @param {dom} node
- * @param {string} attr
- */
-function getAttr(node, attr) {
-  return node.getAttribute(attr);
-}
-
 const styles = {
   border: "0",
   cellpadding: "0",
   cellspacing: "0",
   id: "table-data-wrap",
 };
-console.log(typeof styles);
-const divDom = $("table-data-wrap");
-const tableDome = createEl("table"); //creatElement 创建dom对象
+// const divDom = $("table-data-wrap");
+const divDom = window.Colin.$("table-data-wrap");
+const tableDome = window.Colin.createEl("table"); //creatElement 创建dom对象
 tableDome.width = "100%"; //setAttribute 设置属性
-setAttr(tableDome, styles);
+window.Colin.setAttr(tableDome, styles);
 tableDome.innerHTML = `<thead>
                         <tr>
                         <th>头像</th>
@@ -68,7 +25,39 @@ tableDome.innerHTML = `<thead>
                       </thead>`;
 
 divDom.appendChild(tableDome);
-console.log(tableDome);
-function setA(a, b) {
-  return setAttribute(a, b);
-}
+// console.log(tableDome);
+//array
+const tableTheadData = [{
+    label: "头像"
+  },
+  {
+    label: "姓名"
+  },
+  {
+    label: "性别"
+  },
+  {
+    label: "年龄"
+  },
+  {
+    label: "手机号"
+  },
+  {
+    label: "国籍"
+  },
+  {
+    label: "爱好",
+    width: 200,
+  },
+  {
+    label: "头衔"
+  },
+  {
+    label: "操作"
+  },
+];
+let theadHtml = `<thead><tr>`;
+tableTheadData.forEach(function (item, index, arr) {
+  theadHtml += `<th>${item}</th>`
+})
+theadHtml += `</tr></thead>`
